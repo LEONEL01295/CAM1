@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Centro de Atención Múltiple - CAM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+  header {
+  position: relative;
+  padding: 20px 0;
+  background-color: #0066cc;
+  color: white;
+  text-align: center;
+}
+header h1 {
+  font-size: 75px;
+  font-weight: bold;
+}
+
+
+.logo {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: 20px;
+}
+
+.logo1 {
+  left: 20px;
+}
+
+.logo2 {
+  right: 20px;
+}
+    nav {
+      background-color: #004c99;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    nav a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px; /* Aumenta el tamaño del texto */
+  padding: 12px 24px; /* Aumenta el área clicable del botón */
+}
+
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: none;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    h2, h3 {
+      color: #0066cc;
+    }
+
+    .centered {
+      text-align: center;
+    }
+
+    .imagenes img {
+      width: 30%;
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    #lienzo {
+      border: 2px solid #ccc;
+      background: white;
+      cursor: crosshair;
+    }
+
+    .docente {
+      display: inline-block;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .docente img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background-color: #0066cc;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .imagenes img {
+        width: 100%;
+      }
+
+      iframe {
+        height: 250px;
+      }
+
+      #lienzo {
+        width: 100% !important;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    #inicio h2 {
+      font-size: 60px;
+      color: #004080;
+      font-weight: bold;
+    }
+
+    #inicio p {
+      font-size: 22px;
+      line-height: 1.8;
+      text-align: justify;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- VIDEO DE BIENVENIDA -->
+<div id="bienvenida-video" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: black; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+  <video autoplay muted playsinline id="videoBienvenida" style="width: 100%; height: auto; max-height: 100%;">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+  <button onclick="document.getElementById('bienvenida-video').style.display='none'" style="position: absolute; top: 20px; right: 20px; padding: 10px 20px; font-size: 16px; background: white; border: none; cursor: pointer; z-index: 10000;">Saltar</button>
+</div>
+
+<header>
+  <img src="gobierno.jpg" alt="Logo Gobierno Michoacán" class="logo logo1">
+  <div style="line-height: 1.4;">
+    <h1 style="margin: 0;">Centro de Atención Múltiple</h1>
+    <h1 style="margin: 0;">"CAM Huetamo"</h1>
+    <p style="margin-top: 10px;">
+      DIRECCIÓN DE EDUCACIÓN ELEMENTAL<br>
+      SUBDIRECCIÓN DE EDUCACIÓN ESPECIAL<br>
+      CENTRO DE ATENCIÓN MÚLTIPLE<br>
+      CLAVE: 16DML0017G<br>
+      ASUNTO: RESEÑA DEL C.A.M.
+    </p>
+  </div>
+  <img src="secretaria.jpg" alt="Logo Secretaría de Educación" class="logo logo2">
+</header>
+
+<nav>
+  <a onclick="mostrarSeccion('inicio')">Inicio</a>
+  <a onclick="mostrarSeccion('direccion')">Dirección</a>
+  <a onclick="mostrarSeccion('imagenes')">Imágenes</a>
+  <a onclick="mostrarSeccion('videos')">Videos</a>
+  <a onclick="mostrarSeccion('juegos')">Juegos</a>
+  <a onclick="mostrarSeccion('dibujar')">Dibujar</a>
+  <a onclick="mostrarSeccion('personal')">Personal</a>
+</nav>
+
+<section id="inicio" class="active centered">
+  <h2>🎉 ¡Hola! Bienvenidos al Centro de Atención Múltiple 🏫</h2><br>
+  <p>EL CENTRO DE ATENCION MULTIPLE, MEJOR CONOCIDO COMO C.A.M., FUE FUNDADO EN FEBRERO DE 1994
+UTILIZANDO TRES SALONES DE LA PREPARATORIA BENITO JUAREZ AL SIGUIENTE AÑO SE TRASLADO A LAS 
+INSTALACIONES DE LA ANTIGUA SECUNDARIA 1 DONDE AHORA SE ENCUENTRA EL AUDITORIO MUNICIPAL EN EL 2006 SE TRASLADAN A SUS INSTALACIONES PROPIAS EN LA COLONIA EL CHAMIZAL , ACTUALMENTE 
+SE ATIENDEN A 87 NIÑOS CON DISCAPACIDAD DE SINDROME DE DOWN, PROBLEMAS DE APRENDIZAJE, 
+TRASTORNO DEL ESPECTRO AUTISTA, PROBLEMAS DE CONDUCTA, CEGUERA, PROBLEMAS NEUROMOTORES
+SORDERA, HIPERACTIVIDAD. SE CUENTA CON 8 MAESTROS DE GRUPO, UN MAESTRO DE EDUCACION FISICA
+UN TERAPISTA DE LENGUAJE, UNA TRABAJADORA SOCIAL, UNA SECRETARIA, UNA NIÑERA, DOS INTENDENTES, UNA MAESTRA DE CAPACITACION LABORAL, UNA MAESTRA ENCARGADA DE TERAPIA FISICA, ACTUALMENTE EL ENCARGADO DE LA ESCUELA ES EL LIC. JULIO CESAR FLORES OLAYO.</p>
+</section>
+
+<section id="direccion" style="
+  background: linear-gradient(135deg, #ffe4ec, #e0f7fa);
+  padding: 50px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 30px auto;
+  max-width: 1100px;
+">
+
+  <h2 style="font-size: 2.8em; color: #d81b60; margin-bottom: 20px;">🏫 Dirección</h2>
+
+  <p style="font-size: 1.6em; margin: 10px 0;">
+    📍 <a href="https://maps.app.goo.gl/fnGafZCPbaVXfQCK6" target="_blank" style="color:#0288d1; text-decoration:underline;">
+      Calle Educación #123, Huetamo, Michoacán
+    </a>
+  </p>
+
+  <p style="font-size: 1.6em; margin: 10px 0;">📞 Tel: 01 234 567 890</p>
+  <p style="font-size: 1.6em; margin: 10px 0;">📧 Email: cam.huetamo@educacion.mx</p>
+
+  <div style="width: 100%; max-width: 1000px; margin: 30px auto; border-radius: 15px; overflow: hidden;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.776772844688!2d-100.8881545!3d18.6407006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84349d648d3b29e5%3A0x264dc403c86014e1!2sCentro%20de%20Atenci%C3%B3n%20M%C3%BAltiple%20CAM%20Huetamo!5e0!3m2!1ses-419!2smx!4v1716930400000!5m2!1ses-419!2smx"
+      width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+
+
+<section id="imagenes" class="centered imagenes">
+  <h2>Galería de Imágenes</h2>
+  <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1">
+  <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2">
+  <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3">
+</section>
+
+<section id="videos" class="centered">
+  <h2>Videos de Entretenimiento</h2>
+  <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
+</section>
+
+<section id="juegos" class="centered juegos">
+  <h2>Juegos Educativos</h2>
+  <h3>🎈 Para niños de 3 años</h3>
+  <iframe src="https://www.cokitos.com/tag/3-anos/" title="Juegos para 3 años"></iframe>
+</section>
+
+<section id="dibujar" class="centered">
+  <h2>¡Hora de Dibujar!</h2>
+  <canvas id="lienzo" width="500" height="400"></canvas>
+  <br><br>
+  <button onclick="limpiarCanvas()">🧽 Limpiar Dibujo</button>
+</section>
+
+<section id="personal" class="centered">
+  <h2>Personal Docente y Administrativo</h2>
+  <div class="docente">
+    <img src="julio.jpg" alt="Julio César">
+    <h3>JULIO CÉSAR FLOREZ OLAYO</h3>
+    <p>Ex Director</p>
+  </div>
+  <div class="docente">
+    <img src="alma.jpg" alt="Alma Yolisma">
+    <h3>ALMA YOLISMA BENITES HERNANDEZ</h3>
+    <p>Directora</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Centro de Atención Múltiple Huetamo Michoacán
+</footer>
+
+<script>
+  function mostrarSeccion(id) {
+    const secciones = document.querySelectorAll('section');
+    secciones.forEach(seccion => seccion.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  const canvas = document.getElementById('lienzo');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let dibujando = false;
+
+    canvas.addEventListener('mousedown', () => dibujando = true);
+    canvas.addEventListener('mouseup', () => dibujando = false);
+    canvas.addEventListener('mouseleave', () => dibujando = false);
+    canvas.addEventListener('mousemove', dibujar);
+
+    function dibujar(e) {
+      if (!dibujando) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      ctx.fillStyle = "#000";
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    window.limpiarCanvas = function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  const video = document.getElementById("videoBienvenida");
+  const contenedor = document.getElementById("bienvenida-video");
+
+  video.addEventListener("ended", () => {
+    contenedor.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
